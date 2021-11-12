@@ -18,3 +18,11 @@ jobs:
         with:
           push: true
           tags: ghcr.io/jakkrapan-art/bookinfo-ratings:dev
+      - name: deploy
+        uses: deliverybot/helm@v1
+        with:
+          helm: helm3
+          release: bookinfo-dev-ratings
+          namespace: student3-bookinfo-dev
+          chart: k8s/helm
+          value-files: k8s/helm-values/values-bookinfo-dev-ratings.yaml
